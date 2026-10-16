@@ -15,7 +15,7 @@
   --brand-primary-soft: #8a8a8a;
   --brand-secondary: #3a3a3a;
   --brand-secondary-light: #8a8a8a;
-  --surface: #ffffff;
+  --surface: #fff;
   --surface-raised: #f2f2f2;
   --text: #1f1f1f;
   --text-muted: #5c5c5c;
@@ -27,8 +27,8 @@
 
   --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --display: var(--sans);
-  --serif: 'Newsreader', Georgia, serif;
-  --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --serif: 'Newsreader', georgia, serif;
+  --mono: ui-monospace, 'SF Mono', menlo, monospace;
 
   --radius-14: 14px;
   --radius-18: 18px;
@@ -125,7 +125,7 @@ main:focus {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
 }
 
@@ -556,7 +556,7 @@ tbody th {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  border: 1px solid currentColor;
+  border: 1px solid currentcolor;
   border-radius: var(--radius-pill);
   font-size: 12px;
   font-weight: 700;
@@ -580,7 +580,7 @@ tbody th {
 
 .status-tag[data-status='concept']::before {
   background: transparent;
-  border: 1.5px solid currentColor;
+  border: 1.5px solid currentcolor;
 }
 
 .brand-cards {
@@ -789,6 +789,7 @@ tbody th {
 }
 
 /* ---------- Placeholders ---------- */
+
 /* Stand-in content must never pass for real: a dark tag, heavy stripes, and a dashed edge. */
 .placeholder-tag {
   display: inline-flex;
@@ -849,6 +850,9 @@ tbody th {
   background: rgba(var(--text-rgb), 0.08);
   font-style: italic;
   box-decoration-break: clone;
+
+  /* Safari still needs the prefix for multi-line highlights. */
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-box-decoration-break: clone;
 }
 
@@ -874,7 +878,7 @@ tbody th {
 }
 
 .lockup-frame--dark .placeholder-media {
-  border-color: currentColor;
+  border-color: currentcolor;
   background: repeating-linear-gradient(
     -45deg,
     rgba(var(--surface-rgb), 0.16) 0 12px,
@@ -1254,7 +1258,7 @@ tbody th {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1120px) {
+@media (width <= 1120px) {
   .menu-toggle {
     display: inline-flex;
   }
@@ -1299,7 +1303,7 @@ tbody th {
   }
 }
 
-@media (max-width: 720px) {
+@media (width <= 720px) {
   .header-inner {
     gap: 12px;
   }
@@ -1337,6 +1341,7 @@ tbody th {
 }
 
 /* ---------- Brand layer: Kasu Resorts ---------- */
+
 /* Blue Sky art direction: sentence-case headlines at weight 800. */
 html[data-brand-key='kasu-resorts'] .cover h1,
 html[data-brand-key='kasu-resorts'] .mock-headline {
