@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en" data-brand-key="kasu-resorts">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasu Brand Guide</title>
+  <meta name="description" content="Brand guidelines for the Kasu direct booking portfolio: Kasu Resorts, Padel House, Pickle House, SET HOUSE, and OURS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="#overview">Kasu <span>Brand Guide</span></a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Guide sections">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#overview">Overview</a></li>
+          <li class="nav-group">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="menuIdentity">
+              Identity <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+            </button>
+            <ul class="nav-menu" id="menuIdentity">
+              <li><a class="nav-link" href="#brand">Brand sheet</a></li>
+              <li><a class="nav-link" href="#lockups">Lockups &amp; endorsement</a></li>
+              <li><a class="nav-link" href="#voice">Voice &amp; tone</a></li>
+            </ul>
+          </li>
+          <li class="nav-group">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="menuDesign">
+              Design <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+            </button>
+            <ul class="nav-menu" id="menuDesign">
+              <li><a class="nav-link" href="#color">Color</a></li>
+              <li><a class="nav-link" href="#typography">Typography</a></li>
+              <li><a class="nav-link" href="#foundations">Foundations</a></li>
+              <li><a class="nav-link" href="#accessibility">Accessibility</a></li>
+            </ul>
+          </li>
+          <li class="nav-group">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="menuMedia">
+              Media <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+            </button>
+            <ul class="nav-menu" id="menuMedia">
+              <li><a class="nav-link" href="#imagery">Imagery</a></li>
+            </ul>
+          </li>
+          <li class="nav-group">
+            <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="menuApplications">
+              Applications <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+            </button>
+            <ul class="nav-menu" id="menuApplications">
+              <li><a class="nav-link" href="#modules">Page modules</a></li>
+              <li><a class="nav-link" href="#checklist">Checklist</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="brand-switcher">
+        <label for="brandSelect">Brand</label>
+        <select id="brandSelect"></select>
+      </div>
+    </div>
+  </header>
+
+  <div class="fallback-banner" id="fallbackBanner" role="status" hidden>
+    <span class="material-symbols-rounded" aria-hidden="true">info</span>
+    <p><strong data-brand-field="name"></strong> has no tokenized palette yet. This guide shows the shared fallback palette until the brand's standard is tokenized.</p>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- 01 Overview -->
+    <section class="page" data-page="overview" aria-labelledby="overviewTitle">
+      <div class="cover">
+        <p class="kicker">01 / Portfolio overview</p>
+        <h1 id="overviewTitle">Five brands. <em>One platform.</em></h1>
+        <p class="lede">The brand guide for Kasu's direct booking portfolio: who each brand is, what it looks like, how it speaks, and the rules that hold for all of them.</p>
+      </div>
+
+      <div class="section">
+        <p class="kicker">The platform</p>
+        <h2>Kasu sits beneath every brand.</h2>
+        <div class="two-col">
+          <p>Kasu is the operating and trust platform behind the five public brands. It owns inventory, booking, payments, services, customer data, attribution, and guest support. Public positioning always stays brand-specific.</p>
+          <p>One house can appear on several brands when it legitimately qualifies. It keeps one calendar and one central price book.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="kicker">Platform strings</p>
+        <h2>Use these verbatim.</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Key</th><th scope="col">Copy</th></tr></thead>
+            <tbody id="platformStrings"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="kicker">The portfolio</p>
+        <h2>Five brands, five visual systems.</h2>
+        <p class="section-note">Not five recolors of one page. Choose a brand to re-skin this guide in its tokens.</p>
+        <div class="brand-cards" id="brandCards"></div>
+      </div>
+
+      <div class="section">
+        <p class="kicker">Principles</p>
+        <h2>Rules that hold everywhere.</h2>
+        <ol class="numbered-cards">
+          <li><h3>Tokens, not hard-coding</h3><p>Brand styling comes from tokens or the brand's scoped layer. Shared components never hold a brand color.</p></li>
+          <li><h3>Always endorsed</h3><p>Every customer-facing sub-brand lockup carries <q>by Kasu</q> beneath the sub-brand, using the official vector.</p></li>
+          <li><h3>Only verified claims</h3><p>Capacity, bedrooms, amenities, courts, gyms, rates, and reviews must map to a live listing with dated evidence.</p></li>
+          <li><h3>Concept is not proof</h3><p>Concept or AI imagery can guide design. It is replaced with authorized property or guest media before a page publishes.</p></li>
+          <li><h3>Original execution</h3><p>Familiar patterns are welcome. Other companies' assets, wording, layout measurements, and trade dress are not.</p></li>
+          <li><h3>Consent is per brand</h3><p>Never infer consent for one brand from activity on another.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 02 Brand sheet -->
+    <section class="page" data-page="brand" aria-labelledby="brandTitle" hidden>
+      <div class="cover">
+        <p class="kicker">02 / Brand sheet · <span data-brand-field="name"></span></p>
+        <h1 id="brandTitle" data-brand-headline></h1>
+        <p class="lede" data-brand-field="positioning"></p>
+        <p class="status-row"><span class="status-tag" data-brand-status></span></p>
+      </div>
+      <div class="section">
+        <p class="kicker">At a glance</p>
+        <h2 data-brand-field="signature"></h2>
+        <dl class="fact-grid" id="brandFacts"></dl>
+      </div>
+      <div class="section" id="brandCopySection">
+        <p class="kicker">Configured copy</p>
+        <h2>Words this brand owns.</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Field</th><th scope="col">Copy</th></tr></thead>
+            <tbody id="brandCopy"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Art direction</p>
+        <h2>How it looks.</h2>
+        <p class="measure" data-brand-field="visualDirection"></p>
+        <p class="measure" id="brandGuardrail" hidden></p>
+      </div>
+    </section>
+
+    <!-- 03 Lockups -->
+    <section class="page" data-page="lockups" aria-labelledby="lockupsTitle" hidden>
+      <div class="cover">
+        <p class="kicker">03 / Lockups &amp; endorsement</p>
+        <h1 id="lockupsTitle">Every sub-brand is <em>by Kasu.</em></h1>
+        <p class="lede">The full endorsed lockup, the sub-brand with a subordinate <q>by Kasu</q> line, appears wherever a guest meets the brand.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Current brand · <span data-brand-field="name"></span></p>
+        <h2>Approved marks.</h2>
+        <div class="lockup-grid">
+          <figure class="lockup-frame">
+            <div class="lockup-art" data-asset="lockupSrc"></div>
+            <figcaption>Full lockup</figcaption>
+          </figure>
+          <figure class="lockup-frame lockup-frame--dark">
+            <div class="lockup-art" data-asset="lockupSrc"></div>
+            <figcaption>Full lockup on deep primary</figcaption>
+          </figure>
+          <figure class="lockup-frame">
+            <div class="lockup-art lockup-art--mark" data-asset="monogramSrc"></div>
+            <figcaption>Monogram (constrained formats only)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Where it's required</p>
+        <h2>The full lockup goes on.</h2>
+        <ul class="check-list three-col">
+          <li>Website mastheads, mobile navigation, and footers</li>
+          <li>Property, availability, checkout, and confirmation surfaces</li>
+          <li>Guest communications</li>
+          <li>Social profiles, share cards, and campaigns</li>
+          <li>Collateral and signage</li>
+          <li>Merchandise</li>
+        </ul>
+        <p class="section-note">A monogram may appear alone only in constrained formats such as a favicon or app icon. The nearest brand-identifying surface must then show the full endorsed lockup.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Protect the mark</p>
+        <h2>Rules for every lockup.</h2>
+        <div class="do-dont">
+          <div class="do">
+            <h3><span class="material-symbols-rounded" aria-hidden="true">check_circle</span> Do</h3>
+            <ul>
+              <li>Use approved vector files only.</li>
+              <li>Use the official Kasu wordmark for the endorsement line.</li>
+              <li>Write the endorsement as <q>by Kasu</q>.</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h3><span class="material-symbols-rounded" aria-hidden="true">cancel</span> Don't</h3>
+            <ul>
+              <li>Retype a wordmark in HTML as a substitute.</li>
+              <li>Stretch, recolor outside approved variants, or add shadows, outlines, or effects.</li>
+              <li>Rearrange the endorsement, or write <q>by Kasu Resorts</q>.</li>
+              <li>Use monogram text fallbacks (PH, KR, O, SH) anywhere but empty states.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Voice -->
+    <section class="page" data-page="voice" aria-labelledby="voiceTitle" hidden>
+      <div class="cover">
+        <p class="kicker">04 / Voice &amp; tone</p>
+        <h1 id="voiceTitle">Plain. Specific. <em>Verifiable.</em></h1>
+        <p class="lede">Say exactly what the house, court, or gym offers, and only what has been verified. Short declarative sentences. Sentence case. No hype, no fake urgency.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Principles</p>
+        <h2>How every brand speaks.</h2>
+        <ol class="numbered-cards">
+          <li><h3>Speak to the organizer</h3><p>The person planning the trip is the hero. Relieve their workload: one clear brief, one plan, one team.</p></li>
+          <li><h3>Group-first</h3><p>Everyone, together, under one roof, on your group's schedule.</p></li>
+          <li><h3>Calm confidence</h3><p>Short declarative sentences. Sentence case. No hype and no fake urgency.</p></li>
+          <li><h3>Transparent pricing</h3><p>Give total-price context. Never hide mandatory fees.</p></li>
+          <li><h3>Brand vocabulary</h3><p>Use each brand's organizer term and verified label exactly as configured.</p></li>
+          <li><h3>One voice per surface</h3><p>Never blend brand voices. Messaging templates inherit the booking's brand voice.</p></li>
+        </ol>
+      </div>
+      <div class="section">
+        <p class="kicker">Vocabulary</p>
+        <h2>Each brand's exact words.</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Brand</th><th scope="col">Signature</th><th scope="col">Organizer term</th><th scope="col">Verified label</th></tr></thead>
+            <tbody id="vocabTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Patterns</p>
+        <h2>How it sounds in context.</h2>
+        <div class="pattern-list">
+          <article class="pattern"><h3>Two-beat headline with emphasis</h3><blockquote>The match. The recovery. The long lunch. The rematch. <em>All without leaving home.</em></blockquote></article>
+          <article class="pattern"><h3>Signature line, three to four words</h3><blockquote>Bring everyone. · The club is yours. · The house is in play.</blockquote></article>
+          <article class="pattern"><h3>Honest empty state</h3><blockquote>We will only publish a Padel House once its court and supporting club amenities have been verified.</blockquote></article>
+          <article class="pattern"><h3>Organizer relief</h3><blockquote>You got everyone here. We'll take it from here.</blockquote></article>
+          <article class="pattern"><h3>Search intro</h3><blockquote>Pick your dates and we'll show you what's available across all Kasu Resorts.</blockquote></article>
+          <article class="pattern"><h3>Form success</h3><blockquote>Your trip brief is in. We'll use it to build the right property-specific plan.</blockquote></article>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Avoid</p>
+        <h2>Language that doesn't belong.</h2>
+        <ul class="x-list">
+          <li>Claims about amenities, equipment, capacity, or experiences that aren't verified for that specific property.</li>
+          <li>Wording copied from competitors or listing marketplaces.</li>
+          <li>Hype words, stacked exclamation marks, and all-caps shouting in body copy. Uppercase is reserved for kickers and specific display treatments.</li>
+          <li>A generic <q>Book now</q> as the only call to action. Pair it with organizer and planning actions.</li>
+        </ul>
+      </div>
+      <div class="section">
+        <p class="kicker">System &amp; error copy</p>
+        <h2>Say what happened, then what to do.</h2>
+        <p class="measure">Keep unsaved, saved, background sync, and integration-failure states distinct, each with a plain-language recovery action.</p>
+      </div>
+    </section>
+
+    <!-- 05 Color -->
+    <section class="page" data-page="color" aria-labelledby="colorTitle" hidden>
+      <div class="cover">
+        <p class="kicker">05 / Color · <span data-brand-field="name"></span></p>
+        <h1 id="colorTitle">Color carries <em>meaning.</em></h1>
+        <p class="lede">Each brand has its own palette, applied through tokens. Borders and fills stay restrained so color can do its job.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Palette</p>
+        <h2>Every color has a job.</h2>
+        <p class="section-note" id="paletteNote" hidden></p>
+        <div class="swatch-grid" id="swatches"></div>
+      </div>
+      <div class="section">
+        <p class="kicker">Contrast</p>
+        <h2>Every pairing must be readable.</h2>
+        <p class="section-note">Ratios are calculated live from the current brand's tokens. AA requires 4.5:1 for body text and 3:1 for large text (24px+, or 18.5px+ bold).</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Sample</th><th scope="col">Pairing</th><th scope="col">Ratio</th><th scope="col">Result</th></tr></thead>
+            <tbody id="contrastTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Tokens</p>
+        <h2>Slots are roles, not colors.</h2>
+        <p class="section-note">Storefront CSS still uses legacy slot names that came from Padel House. New work uses the semantic token, mapped from the slot.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Legacy slot</th><th scope="col">Semantic token</th><th scope="col">Role</th><th scope="col">Current value</th></tr></thead>
+            <tbody id="slotTable"></tbody>
+          </table>
+        </div>
+        <ul class="check-list">
+          <li>Shared components consume tokens. Never hard-code a brand hex inside a shared component.</li>
+          <li>New tokens get semantic names (<code>--brand-primary</code>, <code>--surface</code>, <code>--text</code>). Don't add more brand-named variables.</li>
+          <li>Brand overrides live in that brand's scoped layer, with every selector starting <code>html[data-brand-key="…"]</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06 Typography -->
+    <section class="page" data-page="typography" aria-labelledby="typeTitle" hidden>
+      <div class="cover">
+        <p class="kicker">06 / Typography</p>
+        <h1 id="typeTitle">Bold editorial type, <em>human moments.</em></h1>
+        <p class="lede">Manrope carries display, body, and UI. Newsreader carries editorial and human moments. Material Symbols Rounded handles every UI icon.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Typefaces</p>
+        <h2>Three families, one voice.</h2>
+        <div class="type-specimens">
+          <article class="specimen">
+            <p class="specimen-meta">Display · Manrope 700</p>
+            <p class="specimen-display">Bring everyone.</p>
+            <p class="specimen-note">Hero headlines. Condensed tracking (-0.055em), line height 0.9, <code>clamp(54px, 6.5vw, 100px)</code>.</p>
+          </article>
+          <article class="specimen">
+            <p class="specimen-meta">Sans · Manrope 400–800</p>
+            <p class="specimen-sans">Pick your dates and we'll show you what's available.</p>
+            <p class="specimen-note">Body, UI, and section headings (h2 44px / 650 / -0.04em).</p>
+          </article>
+          <article class="specimen">
+            <p class="specimen-meta">Serif · Newsreader 400–500</p>
+            <p class="specimen-serif">You got everyone here. We'll take it from here.</p>
+            <p class="specimen-note">Editorial and human moments.</p>
+          </article>
+          <article class="specimen">
+            <p class="specimen-meta">Icons · Material Symbols Rounded</p>
+            <p class="specimen-icons" aria-hidden="true">
+              <span class="material-symbols-rounded">calendar_month</span>
+              <span class="material-symbols-rounded">group</span>
+              <span class="material-symbols-rounded">bed</span>
+              <span class="material-symbols-rounded">pool</span>
+              <span class="material-symbols-rounded">verified</span>
+            </p>
+            <p class="specimen-note">Optical size 20–48, weight 400, fill 0, grade 0.</p>
+          </article>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Conventions</p>
+        <h2>Small rules, big consistency.</h2>
+        <div class="type-demo">
+          <p class="kicker">Section kicker · uppercase, tracked 0.12–0.2em</p>
+          <p class="type-demo-heading">A headline with <em>emphasis</em> in the brand secondary.</p>
+          <p class="specimen-note"><code>&lt;em&gt;</code> inside a headline switches to the brand secondary color at weight 400.</p>
+        </div>
+        <p class="section-note" id="typeDirectionNote" hidden></p>
+      </div>
+    </section>
+
+    <!-- 07 Foundations -->
+    <section class="page" data-page="foundations" aria-labelledby="foundationsTitle" hidden>
+      <div class="cover">
+        <p class="kicker">07 / Foundations</p>
+        <h1 id="foundationsTitle">Calm under <em>pressure.</em></h1>
+        <p class="lede">Fresh, energetic, and unmistakably hospitality-led. Brand tokens differ, but spacing, accessibility, interaction, and base components are shared.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Product feel</p>
+        <h2>Five ideas behind every screen.</h2>
+        <ol class="numbered-cards">
+          <li><h3>Clarity, original execution</h3><p>Familiar mental models: list and detail editing, calendar-first pricing, obvious publish state, guest-total previews.</p></li>
+          <li><h3>Tactile</h3><p>Large hit targets, smooth transitions, clear pressed and focus states, layered surfaces, immediate save feedback.</p></li>
+          <li><h3>Progressive disclosure</h3><p>Daily work stays simple. Advanced detail opens only on request.</p></li>
+          <li><h3>Fast enough for operations</h3><p>Motion never delays an action. Save, sync, availability freshness, and errors stay visible.</p></li>
+          <li><h3>One coherent product</h3><p>Tokens differ by brand. Everything else is shared.</p></li>
+        </ol>
+      </div>
+      <div class="section">
+        <p class="kicker">Radii</p>
+        <h2>A short, soft scale.</h2>
+        <div class="radius-row">
+          <div class="radius-sample" style="--sample-radius: 14px"><span>14</span></div>
+          <div class="radius-sample" style="--sample-radius: 18px"><span>18</span></div>
+          <div class="radius-sample" style="--sample-radius: 24px"><span>24</span></div>
+          <div class="radius-sample" style="--sample-radius: 32px"><span>32</span></div>
+          <div class="radius-sample radius-sample--pill"><span>999 · pill</span></div>
+        </div>
+        <p class="section-note">Storefront defaults: <code>--radius: 30px</code>, <code>--radius-small: 18px</code>.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Surfaces, borders, shadows</p>
+        <h2>Layered, not stacked.</h2>
+        <div class="surface-row">
+          <div class="surface-sample surface-sample--base"><h3>Surface</h3><p>Warm white or the brand's warm surface.</p></div>
+          <div class="surface-sample surface-sample--raised"><h3>Raised</h3><p>Low-contrast neutral stroke at 14–16% ink.</p></div>
+          <div class="surface-sample surface-sample--shadow"><h3>Shadow</h3><p>Broad and soft, tinted from the brand's dark color.</p></div>
+          <div class="surface-sample surface-sample--glass"><h3>Glass</h3><p>Restrained translucency with blur, always with an opaque fallback.</p></div>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Motion &amp; density</p>
+        <h2>Motion serves the action.</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Direct interactions</th><td>160–220ms (code uses 180–240ms <code>ease</code>). Hover the cards on this page to feel it.</td></tr>
+              <tr><th scope="row">Ambient motion</th><td>Optional, such as a 700ms hero parallax. It never gates an action.</td></tr>
+              <tr><th scope="row">Reduced motion</th><td>A global rule collapses animation and transition durations to 0.01ms. Keep it.</td></tr>
+              <tr><th scope="row">Density</th><td>Spacious at overview level; compact inside calendars and data editors.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Accessibility -->
+    <section class="page" data-page="accessibility" aria-labelledby="a11yTitle" hidden>
+      <div class="cover">
+        <p class="kicker">08 / Accessibility</p>
+        <h1 id="a11yTitle">Readable by <em>everyone.</em></h1>
+        <p class="lede">WCAG AA is the floor for every brand, every surface, every control.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Requirements</p>
+        <h2>Non-negotiable.</h2>
+        <ol class="numbered-cards">
+          <li><h3>AA contrast</h3><p>Check every brand pairing. Translucent and blurred surfaces need an opaque fallback that still passes.</p></li>
+          <li><h3>Visible focus</h3><p>Keyboard focus and logical tab order everywhere, including date pickers, galleries, side sheets, and the inbox.</p></li>
+          <li><h3>44px targets</h3><p>Every touch target is at least 44 by 44 pixels.</p></li>
+          <li><h3>Reduced motion</h3><p><code>prefers-reduced-motion</code> is respected through the global reduction rule.</p></li>
+          <li><h3>More than color</h3><p>Essential meaning never lives only in color, transparency, blur, or animation.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 09 Imagery -->
+    <section class="page" data-page="imagery" aria-labelledby="imageryTitle" hidden>
+      <div class="cover">
+        <p class="kicker">09 / Imagery &amp; media</p>
+        <h1 id="imageryTitle">Property truth <em>first.</em></h1>
+        <p class="lede">Public pages show authorized media of the real property or real guests. Concept and AI imagery is design direction only.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Proof classes</p>
+        <h2>Every asset declares where it came from.</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Proof class</th><th scope="col">Publishable</th></tr></thead>
+            <tbody>
+              <tr><td><code>verified_property</code></td><td><span class="pill pill--yes"><span class="material-symbols-rounded" aria-hidden="true">check</span> Yes</span></td></tr>
+              <tr><td><code>verified_guest</code></td><td><span class="pill pill--yes"><span class="material-symbols-rounded" aria-hidden="true">check</span> Yes</span></td></tr>
+              <tr><td><code>licensed_editorial</code></td><td><span class="pill pill--yes"><span class="material-symbols-rounded" aria-hidden="true">check</span> Yes</span></td></tr>
+              <tr><td><code>concept_only</code></td><td><span class="pill pill--no"><span class="material-symbols-rounded" aria-hidden="true">close</span> No</span></td></tr>
+              <tr><td><code>unknown</code></td><td><span class="pill pill--no"><span class="material-symbols-rounded" aria-hidden="true">close</span> No</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <p class="kicker">Placement</p>
+        <h2>Every placement is recorded.</h2>
+        <ul class="check-list three-col">
+          <li>Brand and property</li>
+          <li>Page and section</li>
+          <li>Role and display order</li>
+          <li>Crop and focal point</li>
+          <li>Descriptive alt text for every image</li>
+          <li>Reuse across brands only after checking proof class</li>
+        </ul>
+      </div>
+      <div class="section">
+        <p class="kicker">Video</p>
+        <h2>Hero video never blocks.</h2>
+        <p class="measure">Hero video always has a poster image and autoplays muted without blocking interaction.</p>
+      </div>
+    </section>
+
+    <!-- 10 Page modules -->
+    <section class="page" data-page="modules" aria-labelledby="modulesTitle" hidden>
+      <div class="cover">
+        <p class="kicker">10 / Page modules · <span data-brand-field="name"></span></p>
+        <h1 id="modulesTitle">Shared mechanics, <em>brand-specific skin.</em></h1>
+        <p class="lede">Every storefront ships the same conversion patterns in its own visual system. The preview below is drawn entirely from the current brand's tokens and copy.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Preview</p>
+        <h2>The hero, re-skinned.</h2>
+        <div class="mock-hero">
+          <p class="mock-kicker" data-brand-field="name"></p>
+          <p class="mock-headline" data-brand-headline></p>
+          <p class="mock-signature" data-brand-field="signature"></p>
+          <div class="mock-actions">
+            <span class="btn btn--cta">Check availability</span>
+            <span class="btn btn--ghost" data-brand-organizer-cta></span>
+          </div>
+        </div>
+        <div class="mock-card">
+          <div class="mock-card-media" aria-hidden="true"><span>Verified property media</span></div>
+          <div class="mock-card-body">
+            <p class="mock-card-title">Property name</p>
+            <p class="mock-card-meta">Exact bedrooms, beds, baths, and capacity from the live listing</p>
+            <span class="verified-chip" data-brand-verified></span>
+          </div>
+        </div>
+        <p class="section-note">Preview content is placeholder. Real cards show verified listing data only.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Conversion patterns</p>
+        <h2>Every brand ships these.</h2>
+        <ul class="check-list three-col">
+          <li>Cinematic, experience-first hero</li>
+          <li>Portfolio-wide date and group-size search that keeps brand and destination context</li>
+          <li>Bold editorial type, low-clutter navigation</li>
+          <li>Destination and property cards with clear capacity</li>
+          <li>Early-access or waitlist capture when a product isn't live</li>
+          <li>Property-page image mosaic</li>
+          <li>Persistent booking and quote rail</li>
+          <li>Exact bedroom, bed, capacity, and bathroom proof</li>
+          <li>Signature-space storytelling</li>
+          <li>Proximity, amenities, reviews, policies, and map</li>
+          <li>Community and participation content</li>
+          <li>Organizer and group-planning calls to action</li>
+        </ul>
+      </div>
+      <div class="section">
+        <p class="kicker">Shared modules</p>
+        <h2>Same modules, brand copy.</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th scope="row">Hero</th><td>Headline and signature</td></tr>
+              <tr><th scope="row">Search intro</th><td>Dates and group size across the brand's portfolio</td></tr>
+              <tr><th scope="row">Verified collection</th><td>Collection headline, note, and verified label</td></tr>
+              <tr><th scope="row">Empty state</th><td>Honest about what isn't published yet</td></tr>
+              <tr><th scope="row">Experience statement</th><td>Three cards</td></tr>
+              <tr><th scope="row">A day at…</th><td>Timeline of five time-stamped moments</td></tr>
+              <tr><th scope="row">Organizer section</th><td>Three planning steps</td></tr>
+              <tr><th scope="row">Brief form</th><td>Roster or trip brief</td></tr>
+              <tr><th scope="row">Checkout</th><td>Heading: <q>Reserve your {Brand}.</q></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Checklist -->
+    <section class="page" data-page="checklist" aria-labelledby="checklistTitle" hidden>
+      <div class="cover">
+        <p class="kicker">11 / Checklist</p>
+        <h1 id="checklistTitle">Before anything <em>ships.</em></h1>
+        <p class="lede">Run through this list before merging any storefront or guest-surface change.</p>
+      </div>
+      <div class="section">
+        <p class="kicker">Pre-merge</p>
+        <h2>Every item, every time.</h2>
+        <ul class="check-list">
+          <li>Brand styling comes from tokens or the brand's scoped layer. No brand hex in shared components.</li>
+          <li>Every customer-facing lockup shows the official <q>by Kasu</q> endorsement.</li>
+          <li>Copy uses the brand's configured organizer term, verified label, and signature.</li>
+          <li>Every public claim maps to verified listing data. No concept imagery on public pages.</li>
+          <li>Concept brands stay behind their release switch until cleared.</li>
+          <li>No competitor wording, assets, or trade dress copied.</li>
+          <li>Interaction motion is 160–240ms, nothing blocks an action, and reduced motion is respected.</li>
+          <li>AA contrast, visible focus, 44px targets, and opaque fallbacks for glass.</li>
+          <li>Any conflict between sources is surfaced, not resolved silently.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Kasu Direct Booking brand guide. Brand standards govern; this guide summarizes them.</p>
+    <p>Powered by Kasu</p>
+  </footer>
+</body>
+</html>
