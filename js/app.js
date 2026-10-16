@@ -90,6 +90,20 @@ function createElement(tag, { className, text } = {}) {
   return element;
 }
 
+/** Creates the standard "Placeholder" tag so stand-in content is never mistaken for real. */
+function createPlaceholderTag(text = 'Placeholder') {
+  const tag = createElement('span', { className: 'placeholder-tag' });
+  const icon = createElement('span', { className: 'material-symbols-rounded', text: 'construction' });
+  icon.setAttribute('aria-hidden', 'true');
+  tag.append(icon, document.createTextNode(text));
+  return tag;
+}
+
+/** Wraps stand-in copy in the highlighted placeholder-text treatment. */
+function createPlaceholderText(text) {
+  return createElement('span', { className: 'placeholder-text', text });
+}
+
 /** Reads the saved brand key; storage can be unavailable in private modes. */
 function readSavedBrandKey() {
   try {
@@ -239,8 +253,8 @@ function renderSwatches(brand, tokens) {
         chip.style.color = tokens[textToken];
         chip.textContent = swatch.hex;
       } else {
-        chip.classList.add('swatch-chip--pending');
-        chip.textContent = 'Value pending';
+        chip.classList.add('placeholder-media');
+        chip.append(createPlaceholderTag(), createElement('span', { className: 'placeholder-label', text: 'Value pending' }));
       }
       const body = createElement('div', { className: 'swatch-body' });
       body.append(
@@ -307,9 +321,15 @@ function renderAssets(brand) {
     frame.dataset.requestedSrc = src;
     image.addEventListener('error', () => {
       if (frame.dataset.requestedSrc !== src) return;
-      const placeholder = createElement('div', { className: 'asset-placeholder' });
+      const placeholder = createElement('div', { className: 'placeholder-media asset-placeholder' });
+      placeholder.setAttribute('role', 'img');
+      placeholder.setAttribute('aria-label', `Placeholder: official ${brand.name} vector pending`);
+      const icon = createElement('span', { className: 'material-symbols-rounded placeholder-icon', text: 'image' });
+      icon.setAttribute('aria-hidden', 'true');
       placeholder.append(
-        createElement('span', { className: 'asset-placeholder-label', text: 'Official vector pending' }),
+        icon,
+        createPlaceholderTag(),
+        createElement('span', { className: 'placeholder-label', text: 'Official vector pending' }),
         createElement('code', { text: src }),
       );
       frame.replaceChildren(placeholder);
@@ -349,7 +369,12 @@ function renderPlatformStrings() {
 function renderVocabTable() {
   document.getElementById('vocabTable').replaceChildren(
     ...BRANDS.map((brand) => buildRow(
-      [brand.name, brand.signature, brand.organizerTerm ?? 'Not yet configured', brand.verifiedLabel ?? 'Not yet configured'],
+      [
+        brand.name,
+        brand.signature,
+        brand.organizerTerm ?? createPlaceholderText('Not yet configured'),
+        brand.verifiedLabel ?? createPlaceholderText('Not yet configured'),
+      ],
       { hasRowHeader: true },
     )),
   );
