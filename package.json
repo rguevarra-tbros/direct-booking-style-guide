@@ -1,0 +1,26 @@
+{
+  "name": "direct-booking-style-guide",
+  "private": true,
+  "type": "module",
+  "description": "Kasu Direct Booking brand guide, published to GitHub Pages.",
+  "scripts": {
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint .",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "check": "npm run lint && npm test",
+    "serve": "python3 -m http.server 8000"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
+    "html-validate": "11.16.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-standard": "40.0.0"
+  }
+}

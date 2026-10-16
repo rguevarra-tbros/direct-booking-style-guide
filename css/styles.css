@@ -15,7 +15,7 @@
   --brand-primary-soft: #8a8a8a;
   --brand-secondary: #3a3a3a;
   --brand-secondary-light: #8a8a8a;
-  --surface: #ffffff;
+  --surface: #fff;
   --surface-raised: #f2f2f2;
   --text: #1f1f1f;
   --text-muted: #5c5c5c;
@@ -27,8 +27,8 @@
 
   --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --display: var(--sans);
-  --serif: 'Newsreader', Georgia, serif;
-  --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --serif: 'Newsreader', georgia, serif;
+  --mono: ui-monospace, 'SF Mono', menlo, monospace;
 
   --radius-14: 14px;
   --radius-18: 18px;
@@ -125,7 +125,7 @@ main:focus {
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
 }
 
@@ -556,7 +556,7 @@ tbody th {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  border: 1px solid currentColor;
+  border: 1px solid currentcolor;
   border-radius: var(--radius-pill);
   font-size: 12px;
   font-weight: 700;
@@ -580,7 +580,7 @@ tbody th {
 
 .status-tag[data-status='concept']::before {
   background: transparent;
-  border: 1.5px solid currentColor;
+  border: 1.5px solid currentcolor;
 }
 
 .brand-cards {
@@ -788,18 +788,87 @@ tbody th {
   font-weight: 600;
 }
 
-.asset-placeholder {
+/* ---------- Placeholders ---------- */
+
+/* Stand-in content must never pass for real: a dark tag, heavy stripes, and a dashed edge. */
+.placeholder-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px 4px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--surface);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.placeholder-tag .material-symbols-rounded {
+  font-size: 15px;
+}
+
+.placeholder-tag--on-dark {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.placeholder-media {
   display: grid;
-  gap: 8px;
-  justify-items: center;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 16px;
+  border: 2px dashed var(--text-muted);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(var(--text-rgb), 0.1) 0 12px,
+    rgba(var(--text-rgb), 0.025) 12px 24px
+  );
+  color: var(--text);
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 40px;
+  opacity: 0.7;
+}
+
+.placeholder-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.placeholder-text {
+  padding: 1px 6px;
+  border-bottom: 2px dashed var(--text-muted);
+  border-radius: 4px 4px 0 0;
+  background: rgba(var(--text-rgb), 0.08);
+  font-style: italic;
+  box-decoration-break: clone;
+
+  /* Safari still needs the prefix for multi-line highlights. */
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-box-decoration-break: clone;
+}
+
+.placeholder-text::before {
+  content: 'edit_note';
+  margin-right: 4px;
+  font-family: 'Material Symbols Rounded';
+  font-size: 1.1em;
+  font-style: normal;
+  vertical-align: -0.15em;
+}
+
+.asset-placeholder {
   width: 100%;
   height: 100%;
-  align-content: center;
-  border: 1.5px dashed currentColor;
   border-radius: var(--radius-14);
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.85;
 }
 
 .asset-placeholder code {
@@ -808,8 +877,33 @@ tbody th {
   word-break: break-all;
 }
 
-.asset-placeholder-label {
-  font-weight: 700;
+.lockup-frame--dark .placeholder-media {
+  border-color: currentcolor;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(var(--surface-rgb), 0.16) 0 12px,
+    rgba(var(--surface-rgb), 0.04) 12px 24px
+  );
+  color: var(--surface);
+}
+
+.lockup-frame--dark .placeholder-tag {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.swatch-chip.placeholder-media {
+  display: grid;
+  font-family: var(--sans);
+  align-content: end;
+  justify-items: start;
+  border-width: 0 0 2px;
+}
+
+.mock-hero-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 /* ---------- Color ---------- */
@@ -834,12 +928,6 @@ tbody th {
   font-family: var(--mono);
   font-size: 14px;
   font-weight: 600;
-}
-
-.swatch-chip--pending {
-  background: repeating-linear-gradient(-45deg, var(--surface-raised) 0 10px, var(--surface) 10px 20px);
-  color: var(--text-muted);
-  font-family: var(--sans);
 }
 
 .swatch-body {
@@ -1035,6 +1123,7 @@ tbody th {
 
 /* ---------- Page modules preview ---------- */
 .mock-hero {
+  position: relative;
   display: grid;
   gap: 18px;
   justify-items: start;
@@ -1113,14 +1202,9 @@ tbody th {
 }
 
 .mock-card-media {
-  display: grid;
-  place-items: center;
-  min-height: 160px;
-  padding: 16px;
-  background: repeating-linear-gradient(-45deg, var(--surface-raised) 0 10px, var(--surface) 10px 20px);
-  color: var(--text-muted);
-  font-size: 13px;
-  text-align: center;
+  min-height: 180px;
+  border-width: 0 2px 0 0;
+  border-radius: 0;
 }
 
 .mock-card-body {
@@ -1174,7 +1258,7 @@ tbody th {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1120px) {
+@media (width <= 1120px) {
   .menu-toggle {
     display: inline-flex;
   }
@@ -1219,7 +1303,7 @@ tbody th {
   }
 }
 
-@media (max-width: 720px) {
+@media (width <= 720px) {
   .header-inner {
     gap: 12px;
   }
@@ -1238,6 +1322,10 @@ tbody th {
   .mock-card {
     grid-template-columns: 1fr;
   }
+
+  .mock-card-media {
+    border-width: 0 0 2px;
+  }
 }
 
 /* Keep the global reduction rule: motion never carries meaning here. */
@@ -1253,6 +1341,7 @@ tbody th {
 }
 
 /* ---------- Brand layer: Kasu Resorts ---------- */
+
 /* Blue Sky art direction: sentence-case headlines at weight 800. */
 html[data-brand-key='kasu-resorts'] .cover h1,
 html[data-brand-key='kasu-resorts'] .mock-headline {

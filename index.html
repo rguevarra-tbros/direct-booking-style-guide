@@ -135,13 +135,13 @@
     <section class="page" data-page="brand" aria-labelledby="brandTitle" hidden>
       <div class="cover">
         <p class="kicker">02 / Brand sheet · <span data-brand-field="name"></span></p>
-        <h1 id="brandTitle" data-brand-headline></h1>
+        <h1 id="brandTitle" data-brand-headline>Brand sheet</h1>
         <p class="lede" data-brand-field="positioning"></p>
         <p class="status-row"><span class="status-tag" data-brand-status></span></p>
       </div>
       <div class="section">
         <p class="kicker">At a glance</p>
-        <h2 data-brand-field="signature"></h2>
+        <h2 data-brand-field="signature">Signature</h2>
         <dl class="fact-grid" id="brandFacts"></dl>
       </div>
       <div class="section" id="brandCopySection">
@@ -505,6 +505,7 @@
         <p class="kicker">Preview</p>
         <h2>The hero, re-skinned.</h2>
         <div class="mock-hero">
+          <span class="placeholder-tag placeholder-tag--on-dark mock-hero-tag"><span class="material-symbols-rounded" aria-hidden="true">construction</span>Placeholder · hero media</span>
           <p class="mock-kicker" data-brand-field="name"></p>
           <p class="mock-headline" data-brand-headline></p>
           <p class="mock-signature" data-brand-field="signature"></p>
@@ -514,14 +515,18 @@
           </div>
         </div>
         <div class="mock-card">
-          <div class="mock-card-media" aria-hidden="true"><span>Verified property media</span></div>
+          <div class="mock-card-media placeholder-media" role="img" aria-label="Placeholder for a verified property photo">
+            <span class="material-symbols-rounded placeholder-icon" aria-hidden="true">image</span>
+            <span class="placeholder-tag"><span class="material-symbols-rounded" aria-hidden="true">construction</span>Placeholder</span>
+            <span class="placeholder-label">Verified property photo</span>
+          </div>
           <div class="mock-card-body">
-            <p class="mock-card-title">Property name</p>
-            <p class="mock-card-meta">Exact bedrooms, beds, baths, and capacity from the live listing</p>
+            <p class="mock-card-title"><span class="placeholder-text">Property name</span></p>
+            <p class="mock-card-meta"><span class="placeholder-text">Exact bedrooms, beds, baths, and capacity from the live listing</span></p>
             <span class="verified-chip" data-brand-verified></span>
           </div>
         </div>
-        <p class="section-note">Preview content is placeholder. Real cards show verified listing data only.</p>
+        <p class="section-note">Anything tagged <strong>Placeholder</strong> or <span class="placeholder-text">highlighted like this</span> is stand-in content. Real cards show verified listing data only.</p>
       </div>
       <div class="section">
         <p class="kicker">Conversion patterns</p>
