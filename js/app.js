@@ -241,29 +241,96 @@ function renderSwatches(brand, tokens) {
   }
   note.hidden = !(brand.palette === null || brand.paletteNamesPending);
 
-  document.getElementById('swatches').replaceChildren(
-    ...swatches.map((swatch) => {
-      const card = createElement('article', { className: 'swatch' });
-      const chip = createElement('div', { className: 'swatch-chip' });
-      if (swatch.hex) {
-        chip.style.background = swatch.hex;
-        // Label in whichever brand text token reads best on this chip.
-        const textToken = contrastRatio(tokens['--text'], swatch.hex) >= contrastRatio(tokens['--surface'], swatch.hex)
-          ? '--text' : '--surface';
-        chip.style.color = tokens[textToken];
-        chip.textContent = swatch.hex;
-      } else {
-        chip.classList.add('placeholder-media');
-        chip.append(createPlaceholderTag(), createElement('span', { className: 'placeholder-label', text: 'Value pending' }));
-      }
-      const body = createElement('div', { className: 'swatch-body' });
-      body.append(
-        createElement('h3', { text: swatch.name }),
-        createElement('p', { text: swatch.role }),
+  document.getElementById('swatches').replaceChildren(...swatches.map((swatch) => createSwatchCard(swatch, tokens)));
+}
+
+/**
+ * Builds one swatch card. Swatches without a hex show the placeholder treatment.
+ * @param {object} swatch - { name, hex, role, slots? }
+ * @param {object} tokens - active token map, used to pick a legible chip label color
+ * @param {string} [note] - optional extra line, e.g. a contrast ratio
+ */
+function createSwatchCard(swatch, tokens, note) {
+  const card = createElement('article', { className: 'swatch' });
+  const chip = createElement('div', { className: 'swatch-chip' });
+  if (swatch.hex) {
+    chip.style.background = swatch.hex;
+    // Label in whichever brand text token reads best on this chip.
+    const textToken = contrastRatio(tokens['--text'], swatch.hex) >= contrastRatio(tokens['--surface'], swatch.hex)
+      ? '--text' : '--surface';
+    chip.style.color = tokens[textToken];
+    chip.textContent = swatch.hex;
+  } else {
+    chip.classList.add('placeholder-media');
+    chip.append(createPlaceholderTag(), createElement('span', { className: 'placeholder-label', text: 'Value pending' }));
+  }
+  const body = createElement('div', { className: 'swatch-body' });
+  body.append(
+    createElement('h3', { text: swatch.name }),
+    createElement('p', { text: swatch.role }),
+  );
+  if (swatch.slots?.length) body.append(createElement('p', { className: 'swatch-slots', text: swatch.slots.join(' ') }));
+  if (note) body.append(createElement('p', { className: 'swatch-slots', text: note }));
+  card.append(chip, body);
+  return card;
+}
+
+/** Renders status colors with their contrast against the page surface, when a brand defines them. */
+function renderFunctionalColors(brand, tokens) {
+  const colors = brand.functionalColors ?? [];
+  document.getElementById('functionalSection').hidden = colors.length === 0;
+  document.getElementById('functionalSwatches').replaceChildren(
+    ...colors.map((color) => {
+      const ratio = contrastRatio(color.hex, tokens['--surface']);
+      // Status text is usually small, so hold it to the normal-text threshold.
+      const verdict = ratio >= AA_NORMAL_TEXT ? 'passes AA as text' : 'use for fills and icons, not small text';
+      return createSwatchCard(color, tokens, `${ratio.toFixed(2)}:1 on surface · ${verdict}`);
+    }),
+  );
+}
+
+/**
+ * Renders the brand's approved photography and direction. Brands without
+ * cleared photos show a placeholder rather than borrowing another brand's media.
+ */
+function renderPhotography(brand) {
+  const photography = brand.photography;
+  const direction = document.getElementById('photoDirection');
+  direction.hidden = !photography;
+  direction.replaceChildren(...(photography?.direction ?? []).map((line) => createElement('li', { text: line })));
+
+  const gallery = document.getElementById('photoGallery');
+  if (!photography?.photos.length) {
+    const placeholder = createElement('div', { className: 'placeholder-media photo-placeholder' });
+    const icon = createElement('span', { className: 'material-symbols-rounded placeholder-icon', text: 'photo_library' });
+    icon.setAttribute('aria-hidden', 'true');
+    placeholder.append(icon, createPlaceholderTag(), createElement('span', {
+      className: 'placeholder-label',
+      text: `No approved photography for ${brand.name} yet`,
+    }));
+    gallery.replaceChildren(placeholder);
+    return;
+  }
+
+  gallery.replaceChildren(
+    ...photography.photos.map((photo) => {
+      const figure = createElement('figure', { className: 'photo' });
+      const image = new Image(photo.width, photo.height);
+      image.src = photo.src;
+      image.alt = photo.alt;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.addEventListener('error', () => {
+        console.error(`Photo failed to load: ${photo.src}`);
+        figure.classList.add('photo--missing');
+      }, { once: true });
+      const caption = createElement('figcaption');
+      caption.append(
+        createElement('span', { className: 'photo-family', text: photo.family }),
+        createElement('span', { text: photo.property }),
       );
-      if (swatch.slots.length) body.append(createElement('p', { className: 'swatch-slots', text: swatch.slots.join(' ') }));
-      card.append(chip, body);
-      return card;
+      figure.append(image, caption);
+      return figure;
     }),
   );
 }
@@ -423,7 +490,9 @@ function setBrand(requestedKey) {
   renderSwatches(brand, tokens);
   renderContrast(tokens);
   renderSlotTable(tokens);
+  renderFunctionalColors(brand, tokens);
   renderAssets(brand);
+  renderPhotography(brand);
   renderFallbackBanner(brand);
   renderTypeDirection(brand);
   renderBrandCardState(brand.key);
