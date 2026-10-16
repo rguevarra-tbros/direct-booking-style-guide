@@ -92,6 +92,7 @@ export const BRANDS = Object.freeze([
     typeDirection: 'Neue Haas Grotesk / Helvetica direction, with EB Garamond for human moments.',
     monogramSrc: 'assets/logos/kasu-resorts-mark.svg',
     lockupSrc: 'assets/logos/kasu-resorts-lockup.svg',
+    lockupOnDarkSrc: 'assets/logos/kasu-resorts-lockup-on-dark.svg',
     palette: [
       { name: 'Deep Sky', hex: '#475C6B', role: 'Primary brand color', slots: ['--green', '--oxblood'] },
       { name: 'Horizon Haze', hex: '#A9BCC7', role: 'Accent, CTA fill, status dots', slots: ['--green-soft', '--oxblood-light', '--brand-accent', '--brand-cta'] },
@@ -99,9 +100,35 @@ export const BRANDS = Object.freeze([
       { name: 'Sunlit Sand', hex: '#F3EFE4', role: 'Page background', slots: ['--ivory'] },
       { name: 'Graphite', hex: '#2F2F2F', role: 'Text, hero background, dark overlays', slots: ['--ink', '--green-dark'] },
       { name: 'Slate Copy', hex: '#5F6B72', role: 'Secondary text', slots: ['--muted'] },
-      // NOTE: Mid Sky is named in the standard; its value has not been published yet.
-      { name: 'Mid Sky', hex: null, role: 'Named in the standard · value pending', slots: [] },
+      // Value from the Kasu Resorts brand standard (July 2026). Not mapped to a storefront slot yet.
+      { name: 'Mid Sky', hex: '#6E8FA8', role: 'Hover states, subtle highlights, small UI elements', slots: [] },
     ],
+    // Status colors from the Kasu Resorts brand standard (July 2026).
+    functionalColors: [
+      { name: 'Success', hex: '#4A6741', role: 'Positive indicators' },
+      { name: 'Warning', hex: '#B8860B', role: 'Caution states' },
+      { name: 'Error', hex: '#8B3A3A', role: 'Error states and alerts' },
+    ],
+    photography: {
+      direction: [
+        'Natural light, warm tones, and editorial composition. Capture the feeling of a place, not just the space.',
+        'Four shot families: aerial overviews, warm interiors, amenity compositions, and detail-led room moments.',
+        'A subtle warm grade with muted saturation. No heavy filters, vignettes, HDR, or oversaturated skies.',
+        'Aspect ratios: 16:9 for heroes, 4:5 for social, 1:1 for grids.',
+      ],
+      // NOTE: Cleared for this guide by the brand owner (October 2026); formal proof classes still need recording.
+      photos: [
+        { src: 'assets/photos/kasu-resorts/clearwater1-aerial-full-property.jpg', width: 1600, height: 893, family: 'Aerial overview', property: 'Clearwater 1', alt: 'Top-down aerial of a private backyard with a pool, hot tub, sport court, putting green, sand court, fire pit, and playground.' },
+        { src: 'assets/photos/kasu-resorts/clearwater1-aerial-pool-loungers.jpg', width: 1600, height: 893, family: 'Amenity composition', property: 'Clearwater 1', alt: 'Pool deck at dusk with six loungers under white umbrellas, a hot tub, and a sport court beside the pool.' },
+        { src: 'assets/photos/kasu-resorts/clearwater1-grill-pool-hottub-court.jpg', width: 1600, height: 893, family: 'Amenity composition', property: 'Clearwater 1', alt: 'Outdoor kitchen with a built-in grill in the foreground, a hot tub and pool behind it, and a covered dining patio at golden hour.' },
+        { src: 'assets/photos/kasu-resorts/clearwater2-aerial-property.jpg', width: 1600, height: 893, family: 'Aerial overview', property: 'Clearwater 2', alt: 'Angled aerial of a red-roofed house with a pool, sport court, small soccer pitch, and putting green surrounded by trees.' },
+        { src: 'assets/photos/kasu-resorts/clearwater2-bunk-room.jpg', width: 1600, height: 893, family: 'Detail-led room moment', property: 'Clearwater 2', alt: 'Sage-green bunk room with a built-in bunk bed, rope-net rail, white linens, folded towels, and an arched mirror.' },
+        { src: 'assets/photos/kasu-resorts/location-beach-horizon.jpg', width: 1600, height: 1066, family: 'Location', property: 'Clearwater Beach area', alt: 'Wide view of white sand, calm turquoise water, and an overcast horizon.' },
+        { src: 'assets/photos/kasu-resorts/location-beach-shoreline.jpg', width: 1600, height: 1066, family: 'Location', property: 'Clearwater Beach area', alt: 'Shoreline curving into the distance with gentle waves under a soft overcast sky.' },
+        { src: 'assets/photos/kasu-resorts/location-beach-waves-closeup.jpg', width: 1600, height: 1066, family: 'Location', property: 'Clearwater Beach area', alt: 'Close view of small waves breaking onto pale sand.' },
+        { src: 'assets/photos/kasu-resorts/location-surfboard-rack.jpg', width: 1600, height: 1066, family: 'Location', property: 'Clearwater Beach area', alt: 'Teal paddleboards standing in a metal rack beneath a palm tree.' },
+      ],
+    },
   },
   {
     key: 'padel-house',
@@ -132,6 +159,7 @@ export const BRANDS = Object.freeze([
     typeDirection: null,
     monogramSrc: 'assets/logos/padel-house-monogram.svg',
     lockupSrc: 'assets/logos/padel-house-lockup.svg',
+    lockupOnDarkSrc: 'assets/logos/padel-house-lockup-on-dark.svg',
     palette: [
       { name: 'Bottle Green', hex: '#173B32', role: 'Primary', slots: ['--green'] },
       { name: 'Deep Green', hex: '#0D2922', role: 'Primary, deep', slots: ['--green-dark'] },
@@ -172,6 +200,7 @@ export const BRANDS = Object.freeze([
     paletteNamesPending: true,
     monogramSrc: 'assets/logos/pickle-house-monogram.svg',
     lockupSrc: 'assets/logos/pickle-house-lockup.svg',
+    lockupOnDarkSrc: 'assets/logos/pickle-house-lockup-on-dark.svg',
     palette: [
       { name: 'Court Teal', hex: '#1E5762', role: 'Primary', slots: ['--green'] },
       { name: 'Deep Club Navy', hex: '#122C3D', role: 'Primary deep and text', slots: ['--green-dark', '--ink'] },
@@ -208,6 +237,7 @@ export const BRANDS = Object.freeze([
     plannedColors: ['Chalk', 'Carbon', 'Eucalyptus', 'Signal Blue', 'Clay', 'Steel'],
     monogramSrc: 'assets/logos/set-house-monogram.svg',
     lockupSrc: 'assets/logos/set-house-lockup.svg',
+    lockupOnDarkSrc: 'assets/logos/set-house-lockup-on-dark.svg',
     palette: null,
   },
   {
@@ -236,6 +266,7 @@ export const BRANDS = Object.freeze([
     plannedColors: ['Old Paper', 'Linen', 'Deep Pine', 'Lake Glass', 'Butter Table', 'Faded Red', 'Moss'],
     monogramSrc: 'assets/logos/ours-monogram.svg',
     lockupSrc: 'assets/logos/ours-lockup.svg',
+    lockupOnDarkSrc: 'assets/logos/ours-lockup-on-dark.svg',
     palette: null,
   },
 ]);

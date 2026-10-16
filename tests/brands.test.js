@@ -4,6 +4,8 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import {
   BRANDS,
   FALLBACK_BRAND_KEY,
@@ -13,6 +15,7 @@ import {
 } from '../js/brands.js';
 
 const HEX_PATTERN = /^#[0-9A-F]{6}$/i;
+const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 const LEGACY_SLOTS = Object.keys(LEGACY_SLOT_TO_TOKEN);
 const tokenizedBrands = BRANDS.filter((brand) => brand.palette);
 
@@ -78,5 +81,21 @@ for (const brand of BRANDS) {
   test(`${brand.key}: asset paths point into assets/logos`, () => {
     assert.match(brand.lockupSrc, /^assets\/logos\/[a-z0-9-]+\.svg$/);
     assert.match(brand.monogramSrc, /^assets\/logos\/[a-z0-9-]+\.svg$/);
+    assert.match(brand.lockupOnDarkSrc, /^assets\/logos\/[a-z0-9-]+\.svg$/);
+  });
+
+  test(`${brand.key}: functional colors have valid hex values`, () => {
+    for (const color of brand.functionalColors ?? []) {
+      assert.match(color.hex, HEX_PATTERN, `${color.name}: ${color.hex}`);
+    }
+  });
+
+  test(`${brand.key}: every photo exists on disk and has alt text`, () => {
+    for (const photo of brand.photography?.photos ?? []) {
+      assert.ok(existsSync(new URL(photo.src, `file://${REPO_ROOT}`)), `missing file ${photo.src}`);
+      assert.match(photo.src, new RegExp(`^assets/photos/${brand.key}/`), 'photos live in the brand folder');
+      assert.ok(photo.alt?.length >= 20, `${photo.src}: alt text must describe the image`);
+      assert.ok(photo.width > 0 && photo.height > 0, `${photo.src}: width and height prevent layout shift`);
+    }
   });
 }
